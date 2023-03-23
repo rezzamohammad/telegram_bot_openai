@@ -1,0 +1,14 @@
+# Chace.
+__pycache__/
+
+
+# Settings.
+.vscode/
+
+
+# Environtment folder.
+env/
+
+
+# Sensitive file information.
+.env

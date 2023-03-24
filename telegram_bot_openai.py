@@ -362,29 +362,29 @@ def codex_ai(message):
                         # Clearing the "openai_result_list" for the next request.
                         openai_result_list.clear()
 
-                        # Split the "openai_response_result" into lines.
-                        openai_response_result_lines = openai_response_result.split("\n")
+                        # Split the "new_prompt" into lines.
+                        questions_message_lines = new_prompt.split("\n")
 
-                        # Truncate the first "openai_response_result" line to the first 10 words.
-                        if len(openai_response_result_lines) > 0:
-                            first_line = openai_response_result_lines[0]
+                        # Truncate the first "new_prompt" line to the first 20 words.
+                        if len(questions_message_lines) > 0:
+                            first_line = questions_message_lines[0]
                             words = first_line.split()
 
-                            if len(words) > 10:
-                                truncated_words = words[:10]
+                            if len(words) > 20:
+                                truncated_words = words[:20]
                                 first_line = " ".join(truncated_words) + "..."
 
                         # Join the first two lines.
-                        if len(openai_response_result_lines) > 1:
-                            openai_response_result_truncate = "\n".join([first_line, openai_response_result_lines[1]])
+                        if len(questions_message_lines) > 1:
+                            questions_message_truncate = "\n".join([first_line, questions_message_lines[1]])
 
                         else:
-                            openai_response_result_truncate = first_line
+                            questions_message_truncate = first_line
 
                         openai_result = (
                             f"Here is your {language_symbol_capitalize} code requested about :\n"
-                            f'"{escape_char(new_prompt)}"\n\n\n\n'
-                            f"{escape_char(openai_response_result_truncate)}"
+                            f'"{escape_char(questions_message_truncate)}"\n\n\n\n'
+                            f"{escape_char(openai_response_result)}"
                         )
 
                         print(f"{stylize(openai_result, colored.fg('deep_pink_3a'))}\n\n\n\n")
@@ -492,34 +492,34 @@ def codex_ai(message):
                         # Clearing the "openai_result_list" for the next request.
                         openai_result_list.clear()
 
-                        # Split the "openai_response_result" into lines.
-                        openai_response_result_lines = openai_response_result.split("\n")
+                        # Split the "replace_message" into lines.
+                        questions_message_lines = replace_message.split("\n")
 
-                        # Truncate the first "openai_response_result" line to the first 10 words.
-                        if len(openai_response_result_lines) > 0:
-                            first_line = openai_response_result_lines[0]
+                        # Truncate the first "replace_message" line to the first 20 words.
+                        if len(questions_message_lines) > 0:
+                            first_line = questions_message_lines[0]
                             words = first_line.split()
 
-                            if len(words) > 10:
-                                truncated_words = words[:10]
+                            if len(words) > 20:
+                                truncated_words = words[:20]
                                 first_line = " ".join(truncated_words) + "..."
 
                         # Join the first two lines.
-                        if len(openai_response_result_lines) > 1:
-                            openai_response_result_truncate = "\n".join([first_line, openai_response_result_lines[1]])
+                        if len(questions_message_lines) > 1:
+                            questions_message_truncate = "\n".join([first_line, questions_message_lines[1]])
 
                         else:
-                            openai_response_result_truncate = first_line
+                            questions_message_truncate = first_line
 
                         if this_engine == engine3:
-                            is_codex = f"```{language}\n{escape_char(openai_response_result_truncate)}\n```"
+                            is_codex = f"```{language}\n{escape_char(openai_response_result)}\n```"
 
                         else:
-                            is_codex = f"{escape_char(openai_response_result_truncate)}"
+                            is_codex = f"{escape_char(openai_response_result)}"
 
                         openai_result = (
                             f"Here is your {language_symbol_capitalize} code requested about :\n"
-                            f'"{escape_char(replace_message)}"\n\n\n\n'
+                            f'"{escape_char(questions_message_truncate)}"\n\n\n\n'
                             f"{is_codex}"
                         )
 
@@ -728,29 +728,29 @@ def neutrino_ai_chatbot(message):
             # Clearing the "openai_result_list" for the next request.
             openai_result_list.clear()
 
-            # Split the "openai_response_result" into lines.
-            openai_response_result_lines = openai_response_result.split("\n")
+            # Split the "replace_message" into lines.
+            questions_message_lines = replace_message.split("\n")
 
-            # Truncate the first "openai_response_result" line to the first 10 words.
-            if len(openai_response_result_lines) > 0:
-                first_line = openai_response_result_lines[0]
+            # Truncate the first "replace_message" line to the first 20 words.
+            if len(questions_message_lines) > 0:
+                first_line = questions_message_lines[0]
                 words = first_line.split()
 
-                if len(words) > 10:
-                    truncated_words = words[:10]
+                if len(words) > 20:
+                    truncated_words = words[:20]
                     first_line = " ".join(truncated_words) + "..."
 
             # Join the first two lines.
-            if len(openai_response_result_lines) > 1:
-                openai_response_result_truncate = "\n".join([first_line, openai_response_result_lines[1]])
+            if len(questions_message_lines) > 1:
+                questions_message_truncate = "\n".join([first_line, questions_message_lines[1]])
 
             else:
-                openai_response_result_truncate = first_line
+                questions_message_truncate = first_line
 
             openai_result = (
                 f"Here is your result from Neutrino AI chatbot, requested about :\n"
-                f'"{escape_char(replace_message)}"\n\n\n\n'
-                f"{escape_char(openai_response_result_truncate)}"
+                f'"{escape_char(questions_message_truncate)}"\n\n\n\n'
+                f"{escape_char(openai_response_result)}"
             )
 
             print(f"{stylize(openai_result, colored.fg('deep_pink_3a'))}\n\n\n\n")
